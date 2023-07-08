@@ -1,21 +1,27 @@
-<?php
-header("Content-type: image/png");
-$img_width = 800;
-$img_height = 600;
-$img = imagecreatetruecolor($img_width, $img_height);
-$black = imagecolorallocate($img, 0, 0, 0);
-$white = imagecolorallocate($img, 255, 255, 255);
-$red   = imagecolorallocate($img, 255, 0, 0);
-$green = imagecolorallocate($img, 0, 255, 0);
-$blue  = imagecolorallocate($img, 0, 0, 255);
-$orange = imagecolorallocate($img, 255, 200, 0);
-imagefill($img, 0, 0, $white);
-imagerectangle($img, $img_width*2/10, $img_height*5/10, $img_width*4/10, $img_height*8/10, $red);
-imagerectangle($img, $img_width*4/10, $img_height*5/10, $img_width*8/10, $img_height*8/10, $red);
-imagepolygon($img, [$img_width*3/10, $img_height*2/10, $img_width*2/10, $img_height*5/10, $img_width*4/10, $img_height*5/10], 3, $red);
-imageopenpolygon($img, [$img_width*3/10, $img_height*2/10, $img_width*7/10, $img_height*2/10, $img_width*8/10, $img_height*5/10], 3, $red);
-imageellipse($img, 100, 100, 100, 100, $orange);
-imagearc($img, $img_width*3/10, $img_height*8/10, 100, 200, 180, 360, $red);
-imageline($img, 0, $img_height*8/10, $img_width, $img_height*8/10, $green);
-imagepng($img);
-?>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF - 8">  
+  <meta http - equiv="X - UA ? Compatible" content="IE=edge">  
+  <meta name="viewport" content="width=device-width, initial - scale=1.0">  
+  <title>PHP</title>  
+</head>  
+<body>  
+<?Php  
+// to define the size of the image  
+   $image= imagecreate( 400,200);  
+// to define the background color of the image  
+   $background-color = imagecolorallocate($image,0, 155, 2);  
+// to define the text color of the image  
+   $text-color = imagecolorallocate($image,255, 255, 255);  
+// These function will define the character to be displayed on the screen  
+   Imagestring($image,13,151,121,"this is text 1", $text-color);  
+   Imagestring($image,4,151,101,"this is text 2", $text-color);  
+   Imagestring($image,10,151,81," this is text 3", $text-color);  
+   Imagestring($image,13,151,61," this is text  4", $text-color);  
+   Header("Content - Type: image/png");  
+   Imagepng($image);  
+   Imagedestroy($image);  
+?>  
+</body>  
+</html>  
