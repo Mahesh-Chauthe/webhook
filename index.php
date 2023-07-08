@@ -1,13 +1,21 @@
 <?php
-$image = ImageCreateTrueColor(270, 150);
-imagesavealpha($image, true);
-$trans_colour = imagecolorallocatealpha($image, 0, 0, 0, 127);
-imagefill($image, 0, 0, $trans_colour);
-$x1 = $y1 = 0 ; 
-$x2 = 270; $y2 = 150; 
-$color = #4a235a; 
-ImageLine($image, $x1, $y1, $x2, $y2, $color);
-header('Content-type: image/png');
-ImagePNG($image);
-ImageDestroy($image);
+header("Content-type: image/png");
+$img_width = 800;
+$img_height = 600;
+$img = imagecreatetruecolor($img_width, $img_height);
+$black = imagecolorallocate($img, 0, 0, 0);
+$white = imagecolorallocate($img, 255, 255, 255);
+$red   = imagecolorallocate($img, 255, 0, 0);
+$green = imagecolorallocate($img, 0, 255, 0);
+$blue  = imagecolorallocate($img, 0, 0, 255);
+$orange = imagecolorallocate($img, 255, 200, 0);
+imagefill($img, 0, 0, $white);
+imagerectangle($img, $img_width*2/10, $img_height*5/10, $img_width*4/10, $img_height*8/10, $red);
+imagerectangle($img, $img_width*4/10, $img_height*5/10, $img_width*8/10, $img_height*8/10, $red);
+imagepolygon($img, [$img_width*3/10, $img_height*2/10, $img_width*2/10, $img_height*5/10, $img_width*4/10, $img_height*5/10], 3, $red);
+imageopenpolygon($img, [$img_width*3/10, $img_height*2/10, $img_width*7/10, $img_height*2/10, $img_width*8/10, $img_height*5/10], 3, $red);
+imageellipse($img, 100, 100, 100, 100, $orange);
+imagearc($img, $img_width*3/10, $img_height*8/10, 100, 200, 180, 360, $red);
+imageline($img, 0, $img_height*8/10, $img_width, $img_height*8/10, $green);
+imagepng($img);
 ?>
